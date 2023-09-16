@@ -1,11 +1,11 @@
-.PHONY: all clean install uninstall
+.PHONY: all clean install uninstall FORCE
 all: fzf fzf-tab-completion
 
-fzf:
-	git clone --depth 1 https://github.com/junegunn/fzf.git $@
+fzf: FORCE
+	git clone --depth 1 https://github.com/junegunn/fzf.git $@ 2> /dev/null || git -C $@ pull
 
-fzf-tab-completion:
-	git clone --depth 1 https://github.com/lincheney/fzf-tab-completion.git $@
+fzf-tab-completion: FORCE
+	git clone --depth 1 https://github.com/lincheney/fzf-tab-completion.git $@ 2> /dev/null || git -C $@ pull
 
 clean:
 	rm -fr fzf
@@ -19,3 +19,5 @@ install: fzf fzf-tab-completion
 
 uninstall:
 	rm -fr ~/.config/fzf
+
+FORCE:
