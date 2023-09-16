@@ -1,3 +1,6 @@
+XDG_CONFIG_HOME ?= $(HOME)/.config
+CONFIG_DIR := $(XDG_CONFIG_HOME)/fzf
+
 .PHONY: all clean install uninstall FORCE
 all: fzf fzf-tab-completion
 
@@ -13,11 +16,11 @@ clean:
 
 install: fzf fzf-tab-completion
 	fzf/install --xdg --key-bindings --completion --no-update-rc
-	cp fzf-tab-completion/bash/fzf-bash-completion.sh ~/.config/fzf/
-	cp fzf-tab-completion/zsh/fzf-zsh-completion.sh ~/.config/fzf/
-	cp preview.sh ~/.config/fzf/
+	cp fzf-tab-completion/bash/fzf-bash-completion.sh $(CONFIG_DIR)/
+	cp fzf-tab-completion/zsh/fzf-zsh-completion.sh $(CONFIG_DIR)/
+	cp preview.sh $(CONFIG_DIR)/
 
 uninstall:
-	rm -fr ~/.config/fzf
+	rm -fr $(CONFIG_DIR)
 
 FORCE:
