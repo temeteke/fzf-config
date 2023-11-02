@@ -15,7 +15,7 @@ clean:
 	rm -fr fzf-tab-completion
 
 install: fzf fzf-tab-completion $(CONFIG_DIR)
-	fzf/install --xdg --key-bindings --no-completion --no-update-rc
+	fzf/install --xdg --key-bindings --completion --no-update-rc
 	cp -a fzf-tab-completion/bash/fzf-bash-completion.sh $(CONFIG_DIR)/
 	cp -a fzf-tab-completion/zsh/fzf-zsh-completion.sh $(CONFIG_DIR)/
 	cp -a preview.sh $(CONFIG_DIR)/
